@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenAI Assistant with RAG - Grounded Support Hub</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar - Knowledge Base Viewer -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fa-solid fa-database logo-icon"></i>
+                    <h2>Knowledge Base</h2>
+                </div>
+                <span class="badge" id="doc-count">0 Chunks</span>
+            </div>
+            
+            <p class="sidebar-description">
+                Below are the active document chunks in our vector database. The AI can only answer questions grounded in this data.
+            </p>
+
+            <div class="doc-search-wrapper">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="doc-search" placeholder="Filter knowledge chunks...">
+            </div>
+
+            <div class="doc-list" id="knowledge-base-docs">
+                <!-- Chunks dynamically loaded here -->
+                <div class="loading-sidebar-spinner">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i>
+                    <span>Syncing vector storage...</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="status-indicator">
+                    <span class="pulse-dot green"></span>
+                    <span>Vector DB Online</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-area">
+            <!-- Header bar -->
+            <header class="chat-header">
+                <div class="header-left">
+                    <div class="avatar-wrapper">
+                        <div class="avatar-glow"></div>
+                        <i class="fa-solid fa-robot avatar-icon"></i>
+                        <span class="active-dot"></span>
+                    </div>
+                    <div class="title-meta">
+                        <h1>Grounded RAG Assistant</h1>
+                        <p id="system-status"><i class="fa-solid fa-microchip"></i> Syncing configuration...</p>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <div class="meta-tag">
+                        <span class="meta-label">Session ID:</span>
+                        <span class="meta-value font-mono" id="session-display">...</span>
+                        <button id="btn-new-session" title="Start New Session">
+                            <i class="fa-solid fa-rotate-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Message Area -->
+            <div class="messages-container" id="chat-messages">
+                <!-- Welcome greeting -->
+                <div class="message-bubble system-welcome">
+                    <div class="welcome-card">
+                        <i class="fa-solid fa-wand-magic-sparkles welcome-icon"></i>
+                        <h3>Welcome to the GenAI RAG Hub</h3>
+                        <p>
+                            This assistant is powered by an active **Retrieval-Augmented Generation (RAG)** pipeline.
+                            Every query runs a real-time semantic cosine similarity search against our document database, returning grounded context to feed the LLM.
+                        </p>
+                        
+                        <div class="suggestion-section">
+                            <h4>Try a recommended search:</h4>
+                            <div class="suggestion-tags">
+                                <button class="suggest-tag" data-query="How can I reset my password?">
+                                    <i class="fa-solid fa-key"></i> How do I reset my password?
+                                </button>
+                                <button class="suggest-tag" data-query="What is your policy on refunds?">
+                                    <i class="fa-solid fa-hand-holding-dollar"></i> What's the refund policy?
+                                </button>
+                                <button class="suggest-tag" data-query="Tell me about subscription tiers and pricing.">
+                                    <i class="fa-solid fa-tags"></i> Subscription tiers
+                                </button>
+                                <button class="suggest-tag" data-query="What is your policy on shipping items to Mars?">
+                                    <i class="fa-solid fa-ban"></i> Shipping to Mars (Forces Fallback)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading indicator -->
+            <div class="chat-loading-indicator" id="chat-loading">
+                <div class="typing-loader">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <span class="loading-text">Performing semantic search & querying LLM...</span>
+            </div>
+
+            <!-- Error Notification Banner -->
+            <div class="error-banner hidden" id="error-notification">
+                <i class="fa-solid fa-triangle-exclamation error-icon"></i>
+                <div class="error-details">
+                    <h5 id="error-title">API Error</h5>
+                    <p id="error-text">Failed to connect to backend.</p>
+                </div>
+                <button class="close-error-btn" id="btn-clear-error">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Input bar -->
+            <footer class="chat-footer">
+                <form id="chat-form" class="chat-input-wrapper">
+                    <input type="text" id="chat-input" placeholder="Ask anything about security, billing, refunds, and support..." autocomplete="off">
+                    <button type="submit" id="btn-send" class="btn-send" disabled>
+                        <i class="fa-solid fa-paper-plane send-icon"></i>
+                    </button>
+                </form>
+                <div class="footer-meta-info">
+                    <span>Similarity Threshold: <strong id="val-threshold">0.70</strong></span>
+                    <span class="separator">•</span>
+                    <span>Powered by FastAPI, Gemini, and NumPy</span>
+                </div>
+            </footer>
+        </main>
+    </div>
+    
+    <!-- Script -->
+    <script src="/script.js"></script>
+</body>
+</html>

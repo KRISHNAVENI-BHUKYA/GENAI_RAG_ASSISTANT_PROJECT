@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "title": "Reset Password Instruction",
+    "category": "Security",
+    "content": "To reset your password, navigate to Settings > Security & Login in your account dashboard. Click on 'Change Password', enter your current password, and then type your new password twice. If you have forgotten your password, click the 'Forgot Password' link on the login page and enter your registered email address. We will send you a password reset token that expires in 15 minutes."
+  },
+  {
+    "id": "2",
+    "title": "Account Deletion Policy",
+    "category": "Account Management",
+    "content": "Users can delete their account permanently by going to Account Settings > Privacy > Delete Account. Please note that account deletion is permanent and irreversible. Once deleted, all your active subscriptions, files, databases, and saved chats will be permanently deleted from our servers within 30 days, in compliance with GDPR guidelines."
+  },
+  {
+    "id": "3",
+    "title": "Refund Policy and Guidelines",
+    "category": "Billing",
+    "content": "We offer a 14-day money-back guarantee for all new monthly and annual premium subscription plans. If you are unsatisfied with the product, you can request a full refund by emailing our billing support team at billing@genaiassistant.com or by clicking the 'Request Refund' button in your Billing dashboard. Refund requests received after 14 days of the initial purchase are not eligible for a refund."
+  },
+  {
+    "id": "4",
+    "title": "Subscription Tiers and Pricing",
+    "category": "Billing",
+    "content": "Our service offers three main pricing tiers. 1) Free Tier: Includes 100 free chat requests per month using standard models. 2) Pro Tier ($15/month): Includes unlimited monthly chats, priority server access, access to advanced LLM reasoning models, and 10GB of document knowledge storage. 3) Enterprise Tier (Custom Pricing): Includes dedicated API throughput, custom vector storage integrations, multi-tenant workspace management, and 24/7 priority support."
+  },
+  {
+    "id": "5",
+    "title": "Enabling Two-Factor Authentication (2FA)",
+    "category": "Security",
+    "content": "To secure your account, we highly recommend enabling Two-Factor Authentication (2FA). Go to Settings > Security > Multi-Factor Authentication. Choose between Authenticator App (Google Authenticator, Authy, or Microsoft Authenticator) or SMS-based verification. Scan the displayed QR code with your authenticator app and enter the 6-digit verification code to confirm activation."
+  },
+  {
+    "id": "6",
+    "title": "Contacting Technical Support",
+    "category": "Support",
+    "content": "Our technical support team can be contacted via three main channels. 1) Live Chat: Available 24/7 on our website for Pro and Enterprise users. 2) Email: Send a ticket to support@genaiassistant.com. We aim to respond within 24 hours for Free tier users and within 2 hours for Pro/Enterprise. 3) Telephone support: Available for Enterprise users at +1-800-GENAI-HELP Monday through Friday from 9 AM to 6 PM EST."
+  }
+]
