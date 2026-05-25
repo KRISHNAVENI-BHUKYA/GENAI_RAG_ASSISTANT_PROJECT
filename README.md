@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # GenAI Assistant with RAG – Enterprise Customer Support Hub
 
 A production-grade, highly optimized **Retrieval-Augmented Generation (RAG) Chat Assistant** designed to answer customer queries with zero hallucinations, strictly grounded in a document knowledge base. 
@@ -204,3 +205,6 @@ Our Single Page Application (SPA) has been engineered with a sleek **dark glassm
    - Text contents of the grounding chunks.
 3. **Session-based Memory:** Sessions are persisted in `localStorage` and display in the header. A reload button allows restarting sessions to verify clean-state memory boundaries.
 4. **Interactive Suggestion Tags:** Provides quick-start questions including valid queries (which return beautiful answers) and out-of-bounds queries (which demonstrate threshold rejection).
+=======
+# GENAI_RAG_ASSISTANT
+>>>>>>> e0877e746f765ae6a5965d3808eee1eb11987643
